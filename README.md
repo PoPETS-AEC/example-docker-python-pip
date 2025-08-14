@@ -32,3 +32,7 @@ docker run --rm -it -v ${PWD}:/workspaces/choose-project-name \
     --entrypoint bash choose-image-name:choose-tag-name
 ```
 
+4. Execute the example script
+```bash
+python3 main.py
+```
