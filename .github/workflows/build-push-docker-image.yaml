@@ -15,6 +15,7 @@ on:
 # workflow builds.
 
 env:
+  REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
 # There is a single job in this workflow. It's configured to run on the latest
@@ -36,17 +37,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Uses the `docker/login-action` action to log in to the DockerHub
-      # registry using the docker username and token provided through variables
-      # and secrets (these need to be configured on your GitHub repo or orga))
-      # that will publish the packages. Once published, the packages are scoped
-      # to the account defined here.
-      - name: Log in to Docker Hub
-        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
-        with:
-          username: ${{ vars.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-
       # Uses the `docker/login-action` action to log in to the Container
       # registry registry using the account and password that will publish the
       # packages. Once published, the packages are scoped to the account defined
@@ -54,7 +44,7 @@ jobs:
       - name: Log in to the Container registry
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
         with:
-          registry: ghcr.io
+          registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
@@ -68,9 +58,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: |
-            yohhaan/popets-aec-example-docker-python-pip
-            ghcr.io/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
 
       # This step uses the `docker/build-push-action` action to build the image,

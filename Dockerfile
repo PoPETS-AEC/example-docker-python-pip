@@ -11,7 +11,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 # Using a requirements.txt file (specifying lower bound values for versions):
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt
-# OR directly:
+# OR by directly running:
 # RUN pip3 install matplotlib numpy pandas Pyarrow seaborn
 
 # Create 1000 group and user to avoid permissions issues with local user/group
