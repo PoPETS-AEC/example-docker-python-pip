@@ -2,8 +2,8 @@
 
 Example of a Dockerized python application using pip to install python packages.
 Feel free to reuse and adapt it for your own software artifact or project. No
-attribution needed as we release this into the public domain, see [The
-Unlicense](LICENSE).
+attribution needed as this is released into the public domain (see [The
+Unlicense](LICENSE)).
 
 ## Getting Started
 
