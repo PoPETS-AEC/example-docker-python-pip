@@ -1,6 +1,6 @@
 {
   "name": "example-docker-python-pip",
-  "dockerFile": "Dockerfile",
+  "dockerFile": "../Dockerfile",
   "postCreateCommand": "",
   "customizations": {
     "vscode": {
