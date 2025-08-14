@@ -43,17 +43,17 @@ docker run --rm -it -v ${PWD}:/workspaces/example-docker-python-pip \
 python3 main.py
 ```
 
-## GitHub Workflow
+## GitHub Workflow and Container Registry (and/or DockerHub)
 
-We have also configure a GitHub workflow to automatically build and push the
-Docker image to GitHub's Container Registry every time a commit modifies the
-`Dockerfile` or the `requirements.txt` file (this can easily be configured to
+A GitHub workflow is also configured to automatically build and push the Docker
+image to GitHub's Container Registry every time a commit modifies the
+`Dockerfile` or the `requirements.txt` files (this can easily be switched to
 trigger at every commit on the repository). See under
 [`.github/workflows`](.github/workflows/) for more details.
 
-This means that the building step can be skipped locally and the image can
-be pulled and used from the Container Registry (verify that the package's
-visibility is set to `Public`):
+This means that the docker image building step can be skipped locally and the
+image can instead be pulled and used from the Container Registry (verify that
+the package's visibility is set to `Public`):
 
 ```bash
 docker pull ghcr.io/popets-aec/example-docker-python-pip:main
