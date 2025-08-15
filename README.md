@@ -1,71 +1,69 @@
 # example-docker-python-pip
 
 Example of a Dockerized python application using pip to install python packages.
-Feel free to reuse and adapt it for your own software artifact or project. No
-attribution needed as this is released into the public domain (see [The
-Unlicense](LICENSE)).
 
-## Getting Started
+### Notes:
+- Feel free to reuse and adapt it for your own software artifact or project.
+- No attribution needed (see [The Unlicense](LICENSE)).
+- If you fork this as a starter repository, you will likely want to pick another
+  license for your artifact.
+- The [`.devcontainer/`](.devcontainer/) directory contains the config for
+ integration with VS Code (see [guide
+here](https://github.com/PoPETS-AEC/examples-and-other-resources/blob/main/resources/vs-code-docker-integration.md)).
+- A [GitHub workflow](.github/workflows/build-push-docker-image.yaml)
+  automatically builds the Docker image and pushes it to the Container Registry
+(see [guide
+here](https://github.com/PoPETS-AEC/examples-and-other-resources/blob/main/resources/github-workflow-docker-image.md)).
 
-**Software requirements:**
+## Software requirements
 - [Docker Engine](https://docs.docker.com/engine/install/)
 - [git](https://git-scm.com/downloads)
 
-1. Clone this repository:
-   - `git clone git@github.com:PoPETS-AEC/example-docker-python-pip.git` (SSH)
-   - `git clone https://github.com/PoPETS-AEC/example-docker-python-pip.git` (HTTPS)
+## Instructions
 
-We provide a [`Dockerfile`](./Dockerfile) and under
-[`.devcontainer/`](.devcontainer/) the configurations for direct integration
-with VS Code (see [guide
-here](https://github.com/PoPETS-AEC/examples-and-other-resources?tab=readme-ov-file#vs-code-and-docker-integration)).
+Start by cloning this repository:
+- `git clone git@github.com:PoPETS-AEC/example-docker-python-pip.git` (SSH)
+- `git clone https://github.com/PoPETS-AEC/example-docker-python-pip.git` (HTTPS)
 
-To manually build the image and launch the Docker container, follow the
-instructions below:
+Then, follow either set of instructions:
 
-1. Build the Docker image:
-```bash
-docker build -t example-docker-python-pip:main .
-```
+> <details><summary>Using the Docker image from the Container Registry</summary>
+>
+> This [GitHub workflow](.github/workflows/build-push-docker-image.yaml)
+> automatically builds and pushes the Docker image to GitHub's Container Registry
+> when the `Dockerfile` or the `requirements.txt` files are modified.
+>
+> 1. Pull the Docker image:
+> ```bash
+> docker pull ghcr.io/popets-aec/example-docker-python-pip:main
+> ```
+> 2. Launch the Docker container:
+> ```bash
+> docker run --rm -it -v ${PWD}:/workspaces/example-docker-python-pip \
+>     -w /workspaces/example-docker-python-pip \
+>     --entrypoint bash ghcr.io/popets-aec/example-docker-python-pip:main
+> ```
+> 3. Execute the example script:
+> ```bash
+> python3 main.py
+> ```
+> </details>
 
-2. Create and deploy the Docker container by mounting the current working
-   directory, i.e., this repository with the code, as a volume to access from
-   the container, specifying the working directory to be that volume, and giving
-   us access to a bash terminal:
-```bash
-docker run --rm -it -v ${PWD}:/workspaces/example-docker-python-pip \
-    -w /workspaces/example-docker-python-pip \
-    --entrypoint bash example-docker-python-pip:main
-```
 
-3. Then, you should be able to execute the example script:
-```bash
-python3 main.py
-```
-
-## GitHub Workflow and Container Registry (and/or DockerHub)
-
-A GitHub workflow is also configured to automatically build and push the Docker
-image to GitHub's Container Registry every time a commit modifies the
-`Dockerfile` or the `requirements.txt` files (this can easily be switched to
-trigger at every commit on the repository). See under
-[`.github/workflows`](.github/workflows/) for more details.
-
-This means that the docker image building step can be skipped locally and the
-image can instead be pulled and used from the Container Registry (verify that
-the package's visibility is set to `Public`):
-
-```bash
-docker pull ghcr.io/popets-aec/example-docker-python-pip:main
-
-docker run --rm -it -v ${PWD}:/workspaces/example-docker-python-pip \
-    -w /workspaces/example-docker-python-pip \
-    --entrypoint bash ghcr.io/popets-aec/example-docker-python-pip:main
-```
-
-Similarly, it is also possible to push the image to the DockerHub, we defer to
-the documentation provided by GitHub
-[here](https://docs.github.com/en/actions/tutorials/publish-packages/publish-docker-images).
-Note that for DockerHub, an account is required and a token should be generated,
-they will have to be provided as a repository variable and a secret,
-respectively, for the workflow to be able to use them.
+> <details><summary>Using a locally built Docker image</summary>
+>
+> 1. Build the Docker image:
+> ```bash
+> docker build -t example-docker-python-pip:main .
+> ```
+> 2. Launch the Docker container:
+> ```bash
+> docker run --rm -it -v ${PWD}:/workspaces/example-docker-python-pip \
+>     -w /workspaces/example-docker-python-pip \
+>     --entrypoint bash example-docker-python-pip:main
+> ```
+> 3. Execute the example script:
+> ```bash
+> python3 main.py
+> ```
+> </details>
