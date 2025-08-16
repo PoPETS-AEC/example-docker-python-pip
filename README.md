@@ -45,7 +45,7 @@ Then, follow either set of instructions:
 > ```
 > 3. Execute the example script:
 > ```bash
-> python3 main.py
+> ./test.sh
 > ```
 > </details>
 
@@ -64,6 +64,6 @@ Then, follow either set of instructions:
 > ```
 > 3. Execute the example script:
 > ```bash
-> python3 main.py
+> ./test.sh
 > ```
 > </details>
