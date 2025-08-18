@@ -16,7 +16,7 @@ RUN pip3 install -r requirements.txt
 
 # Create 1000 group and user to avoid permissions issues with local user/group
 # when editing files in and out of docker container.
-RUN addgroup --gid 1000 vscode
-RUN adduser --disabled-password --gecos "" --uid 1000 --gid 1000 vscode
-ENV HOME=/home/vscode
-USER vscode
+RUN addgroup --gid 1000 username
+RUN adduser --disabled-password --gecos "" --uid 1000 --gid 1000 username
+ENV HOME=/home/username
+USER username

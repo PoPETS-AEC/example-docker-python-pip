@@ -1,7 +1,12 @@
-def savefig(path, size=[4, 3]):
-    import matplotlib.pyplot as plt
-    import os
+# Imports
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import os
+import seaborn as sns
 
+
+def savefig(path, size=[4, 3]):
     # Automatically create directories if needed
     os.makedirs(os.path.dirname(path), exist_ok=True)
 
@@ -14,9 +19,6 @@ def savefig(path, size=[4, 3]):
 
 
 def main():
-    import numpy as np
-    import pandas as pd
-    import seaborn as sns
 
     # Set seaborn style
     sns.set_style("whitegrid")
