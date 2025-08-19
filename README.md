@@ -67,3 +67,15 @@ Then, follow either set of instructions:
 > ./test.sh
 > ```
 > </details>
+
+## ToDos if you reuse this template as starter
+
+Make this repository yours:
+
+- [ ] Edit the [`LICENSE`](./LICENSE) to fit your needs.
+- [ ] Edit packages to install under [`Dockerfile`](./Dockerfile) and
+  [`requirements.txt`](./requirements.txt).
+- [ ] Edit the trigger condition for the [GitHub Action
+  workflow](./github/workflows/build-push-docker-image.yaml) as needed.
+- [ ] Edit documentation in this `README.md` as needed.
+- [ ] Add your code and other scripts, etc.
