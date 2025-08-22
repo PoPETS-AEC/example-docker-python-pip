@@ -12,11 +12,16 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt
 # OR directly running:
-# RUN pip3 install matplotlib numpy pandas Pyarrow seaborn
+# RUN pip3 install "matplotlib>=3.10.5" "numpy>=2.3.2" "pandas>=2.3.1" "pyarrow>=21.0.0" "seaborn>=0.13.2"
 
-# Create 1000 group and user to avoid permissions issues with local user/group
+# Create group and user to avoid permissions issues with local user/group
 # when editing files in and out of docker container.
-RUN addgroup --gid 1000 username
+# Note: GNU/Linux systems assign the default 1000 User Identifier (UID) and
+# Group Identifier (GID) to the first account created during installation. It is
+# possible that your local UID and GID on your machine may be different, in that
+# case you should edit the values in the commands below.
+# You can see your UID and GID(s) by executing: `id`
+RUN addgroup --gid 1000 groupname
 RUN adduser --disabled-password --gecos "" --uid 1000 --gid 1000 username
 ENV HOME=/home/username
 USER username

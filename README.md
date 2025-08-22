@@ -16,8 +16,8 @@ here](https://github.com/PoPETS-AEC/examples-and-other-resources/blob/main/resou
 here](https://github.com/PoPETS-AEC/examples-and-other-resources/blob/main/resources/github-workflow-docker-image.md)).
 
 ## Software requirements
-- [Docker Engine](https://docs.docker.com/engine/install/)
-- [git](https://git-scm.com/downloads)
+- [Docker Engine 28.3.3 (should work with any recent version)](https://docs.docker.com/engine/install/)
+- [git 2.39.5 (any version should work)](https://git-scm.com/downloads)
 
 ## Instructions
 
@@ -79,3 +79,6 @@ Make this repository yours:
   workflow](./github/workflows/build-push-docker-image.yaml) as needed.
 - [ ] Edit documentation in this `README.md` as needed.
 - [ ] Add your code and other scripts, etc.
+- [ ] If you have trouble with permissions on files created inside/outside of
+  the Docker container when accessed from outside/inside of it, see the note
+  about UID and GID in the [`Dockerfile`](./Dockerfile).
