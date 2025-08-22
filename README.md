@@ -37,7 +37,9 @@ Then, follow either set of instructions:
 > ```bash
 > docker pull ghcr.io/popets-aec/example-docker-python-pip:main
 > ```
-> 2. Launch the Docker container:
+> 2. Launch the Docker container, attach the current working directory (i.e.,
+> run from the root of the cloned git repository) as a volume, set the context
+> to be that volume, and provide an interactive bash terminal:
 > ```bash
 > docker run --rm -it -v ${PWD}:/workspaces/example-docker-python-pip \
 >     -w /workspaces/example-docker-python-pip \
@@ -56,7 +58,9 @@ Then, follow either set of instructions:
 > ```bash
 > docker build -t example-docker-python-pip:main .
 > ```
-> 2. Launch the Docker container:
+> 2. Launch the Docker container, attach the current working directory (i.e.,
+> run from the root of the cloned git repository) as a volume, set the context
+> to be that volume, and provide an interactive bash terminal:
 > ```bash
 > docker run --rm -it -v ${PWD}:/workspaces/example-docker-python-pip \
 >     -w /workspaces/example-docker-python-pip \
@@ -79,6 +83,6 @@ Make this repository yours:
   workflow](./github/workflows/build-push-docker-image.yaml) as needed.
 - [ ] Edit documentation in this `README.md` as needed.
 - [ ] Add your code and other scripts, etc.
-- [ ] If you have trouble with permissions on files created inside/outside of
-  the Docker container when accessed from outside/inside of it, see the note
-  about UID and GID in the [`Dockerfile`](./Dockerfile).
+- [ ] If you have trouble with permissions on files created inside/outside the
+  Docker container when accessed from outside/inside it, see the note about UID
+  and GID in the [`Dockerfile`](./Dockerfile).
