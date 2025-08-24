@@ -5,7 +5,7 @@ Example of a Dockerized python application using pip to install python packages.
 ### Notes:
 - Feel free to reuse and adapt it for your own software artifact or project.
 - No attribution needed (see [The Unlicense](LICENSE)).
-- If you fork this as a starter repository, you will likely want to pick another
+- If you use this as a starter repository, you will likely want to pick another
   license for your artifact.
 - The [`.devcontainer/`](.devcontainer/) directory contains the config for
  integration with VS Code (see [guide
